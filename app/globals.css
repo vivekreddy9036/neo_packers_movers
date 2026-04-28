@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --container-px: 32px;
+    --section-py: 128px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --container-px: 20px;
+      --section-py: 80px;
+    }
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-canvas text-slate-700 font-sans;
+    font-feature-settings: "ss01", "cv11", "cv05";
+  }
+
+  ::selection {
+    @apply bg-navy-900 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-canvas-50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full border-[3px] border-canvas-50 bg-clip-padding;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300;
+  }
+}
+
+@layer components {
+  .container-px {
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+  }
+
+  .section-py {
+    padding-top: var(--section-py);
+    padding-bottom: var(--section-py);
+  }
+
+  .container-x {
+    @apply mx-auto w-full max-w-container container-px;
+  }
+
+  .display-h1 {
+    @apply font-display font-bold tracking-tight-display text-ink-900;
+    font-size: clamp(3rem, 6.5vw, 6.25rem);
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+  }
+
+  .display-h2 {
+    @apply font-display font-bold tracking-tight-display text-ink-900;
+    font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .display-eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-signal-600 font-medium;
+  }
+
+  .lead {
+    @apply text-lg text-slate-600 leading-[1.65];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:bg-navy-800 hover:-translate-y-[1px] hover:shadow-elevated active:translate-y-0;
+  }
+
+  .btn-cta {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-signal-500 px-7 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:bg-signal-600 hover:-translate-y-[1px] hover:shadow-glow active:translate-y-0;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-4 text-sm font-semibold text-ink-900 transition-all duration-200 ease-premium hover:border-slate-300 hover:bg-canvas-50 hover:-translate-y-[1px];
+  }
+
+  .hairline {
+    @apply border-slate-100;
+  }
+
+  .num {
+    @apply font-mono tabular-nums;
+    font-feature-settings: "tnum", "ss01";
+  }
+
+  .surface {
+    @apply bg-white border border-slate-100 rounded-2xl;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-canvas-50 border border-slate-100 px-3 py-1 text-xs text-slate-600 font-medium;
+  }
+}
+
+/* Marquee gradient mask */
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* Subtle dot grid for hero / hero-like sections */
+.bg-dots {
+  background-image: radial-gradient(
+    rgba(10, 37, 64, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Soft top-down glow gradient for hero */
+.bg-hero-soft {
+  background:
+    radial-gradient(
+      1200px 600px at 20% -10%,
+      rgba(11, 95, 255, 0.08),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at 90% 10%,
+      rgba(255, 106, 0, 0.06),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+}
+
+/* Strong horizontal divider sweep used between sections */
+.divider-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(10, 37, 64, 0.12) 20%,
+    rgba(10, 37, 64, 0.12) 80%,
+    transparent
+  );
+}
