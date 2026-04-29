@@ -8,7 +8,6 @@ import { cn, SITE } from "@/lib/utils";
 const NAV = [
   { href: "#services", label: "Services" },
   { href: "#industries", label: "Industries" },
-  { href: "#case-studies", label: "Projects" },
   { href: "#why-us", label: "Why Neo" },
   { href: "#faq", label: "FAQ" },
 ];
