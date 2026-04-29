@@ -7,9 +7,9 @@ import { SITE } from "@/lib/utils";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const TRUST = [
-  { value: "21+", label: "Years of operations" },
-  { value: "12,840", label: "Industrial moves" },
-  { value: "99.4%", label: "Claim-free delivery" },
+  { value: "25+", label: "Years of experience" },
+  { value: "500+", label: "Industrial projects" },
+  { value: "5,000+", label: "Vehicle movements" },
   { value: "28", label: "States served" },
 ];
 
@@ -43,7 +43,7 @@ export function Hero() {
             transition={{ duration: 0.5, ease }}
             className="display-eyebrow text-white/60 mb-6"
           >
-            EST. 2003 &nbsp;·&nbsp; ISO 9001 &nbsp;·&nbsp; IATA &amp; FIATA CERTIFIED
+            EST. 1999 &nbsp;·&nbsp; ISO 9001 &nbsp;·&nbsp; IATA &amp; FIATA CERTIFIED
           </motion.p>
 
           <motion.h1
@@ -52,9 +52,9 @@ export function Hero() {
             transition={{ duration: 0.7, ease, delay: 0.08 }}
             className="display-h1 text-white"
           >
-            India&rsquo;s most trusted
+            Packed for Safety,
             <br />
-            <span className="text-signal-500">industrial movers.</span>
+            <span className="text-signal-500">Ready for Transit.</span>
           </motion.h1>
 
           <motion.p
@@ -64,8 +64,9 @@ export function Hero() {
             className="mt-6 text-white/70 max-w-xl leading-[1.7]"
             style={{ fontSize: "clamp(1rem, 1.4vw, 1.125rem)" }}
           >
-            20+ years relocating CNC machines, heavy presses, transformers and
-            export cargo — across India and beyond, without a single claim.
+            Safeguarding your most vital assets is not just logistics — it&rsquo;s
+            an art. An art perfected over 25 years, where every nuance of
+            protection is meticulously crafted.
           </motion.p>
 
           <motion.div

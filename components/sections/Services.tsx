@@ -1,18 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Truck, Package, Airplane, GearSix, Buildings } from "@phosphor-icons/react";
+import { ArrowUpRight, Truck, Package, Airplane, GearSix, Buildings, Wrench, Drop } from "@phosphor-icons/react";
 import { services } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const ICONS: Record<string, typeof Truck> = {
-  "heavy-machinery-relocation": Truck,
   "industrial-packing": Package,
+  "heavy-machinery-relocation": Truck,
   "export-packing": Airplane,
-  "custom-crating": GearSix,
   "office-relocation": Buildings,
+  "on-site-packing": Wrench,
+  "custom-crating": GearSix,
+  "vci-shrink-wrapping": Drop,
 };
 
 export function Services() {

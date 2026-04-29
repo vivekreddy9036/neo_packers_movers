@@ -6,9 +6,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const SITE = {
-  name: "Neo Industrial",
-  phone: process.env.NEXT_PUBLIC_PHONE_NUMBER ?? "+91 9999 999 999",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "919999999999",
-  email: "ops@neoindustrial.example",
-  established: 2003,
+  name: "Neo Packers & Movers",
+  phone: "+91 91211 04237",
+  whatsapp: "919121104237",
+  email: "info@neopackersandmovers.com",
+  established: 1999,
+  address:
+    "Survey No 1/1, Behind TSIID Office, Airport Road, Ravirala Village, Shamshabad, Hyderabad – 501501",
 };

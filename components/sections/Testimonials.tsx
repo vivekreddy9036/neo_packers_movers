@@ -25,7 +25,7 @@ export function Testimonials() {
           <h2 className="display-h2">From the people who run plants.</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
