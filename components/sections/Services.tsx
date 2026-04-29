@@ -1,30 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Truck, Package, Airplane, GearSix, Buildings, Wrench, Drop } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { services } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const ICONS: Record<string, typeof Truck> = {
-  "industrial-packing": Package,
-  "heavy-machinery-relocation": Truck,
-  "export-packing": Airplane,
-  "office-relocation": Buildings,
-  "on-site-packing": Wrench,
-  "custom-crating": GearSix,
-  "vci-shrink-wrapping": Drop,
+const BENTO: Record<string, { grid: string; large: boolean }> = {
+  "industrial-packing": {
+    grid: "lg:col-start-1 lg:col-span-2 lg:row-start-1 lg:row-span-2",
+    large: true,
+  },
+  "export-packing": {
+    grid: "lg:col-start-3 lg:col-span-1 lg:row-start-1 lg:row-span-1",
+    large: false,
+  },
+  "office-relocation": {
+    grid: "lg:col-start-4 lg:col-span-1 lg:row-start-1 lg:row-span-1",
+    large: false,
+  },
+  "heavy-machinery-relocation": {
+    grid: "lg:col-start-3 lg:col-span-2 lg:row-start-2 lg:row-span-2",
+    large: true,
+  },
+  "on-site-packing": {
+    grid: "lg:col-start-1 lg:col-span-1 lg:row-start-3 lg:row-span-1",
+    large: false,
+  },
+  "custom-crating": {
+    grid: "lg:col-start-2 lg:col-span-1 lg:row-start-3 lg:row-span-1",
+    large: false,
+  },
+  "vci-shrink-wrapping": {
+    grid: "lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-1",
+    large: false,
+  },
 };
 
 export function Services() {
-  const featured = services.find((s) => s.feature);
-  const rest = services.filter((s) => !s.feature);
-
   return (
     <section id="services" className="section-py bg-canvas">
       <div className="container-x">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <p className="display-eyebrow mb-4">What we move</p>
             <h2 className="display-h2">
@@ -34,105 +52,88 @@ export function Services() {
             </h2>
           </div>
           <p className="lead max-w-md">
-            Five specialist disciplines, one accountability chain. Every brief
+            Seven specialist disciplines, one accountability chain. Every brief
             ships through the same engineering-grade workflow.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {featured && (
-            <ServiceCard
-              service={featured}
-              className="md:col-span-2 lg:row-span-2"
-              large
-            />
-          )}
-          {rest.map((service, i) => (
-            <motion.div
-              key={service.slug}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.6, ease, delay: i * 0.05 }}
-            >
-              <ServiceCard service={service} />
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px_220px] gap-4">
+          {services.map((service, i) => {
+            const meta = BENTO[service.slug];
+            const isLarge = meta?.large ?? false;
+
+            return (
+              <motion.div
+                key={service.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, ease, delay: i * 0.05 }}
+                className={cn(
+                  "flex flex-col bg-white border border-slate-100 rounded-xl p-7 min-h-[200px]",
+                  meta?.grid ?? ""
+                )}
+              >
+                {/* Content pushed to bottom */}
+                <div className="flex-1 flex flex-col justify-end">
+                  <h3
+                    className={cn(
+                      "font-display font-bold text-ink-900 tracking-tight-display",
+                      isLarge
+                        ? "text-2xl lg:text-[1.6rem] leading-snug"
+                        : "text-lg leading-snug"
+                    )}
+                  >
+                    {service.title}
+                  </h3>
+
+                  {isLarge && (
+                    <p className="mt-2 text-slate-600 text-[14px] leading-relaxed">
+                      {service.blurb}
+                    </p>
+                  )}
+
+                  <div className="mt-4 pt-4 border-t border-slate-100">
+                    <p className="num text-lg font-bold text-ink-900 leading-tight">
+                      {service.stat}
+                    </p>
+                    <p className="num mt-0.5 text-[10px] uppercase tracking-[0.14em] text-slate-500">
+                      {service.statLabel}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+
+          {/* 8th card — CTA */}
+          <motion.a
+            href="#lead-form"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease, delay: 0.35 }}
+            className="group flex flex-col justify-between bg-ink-900 rounded-xl p-7 min-h-[200px] lg:col-start-3 lg:col-span-2 lg:row-start-4 lg:row-span-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+          >
+            <div>
+              <span className="inline-block text-[10px] num uppercase tracking-[0.18em] text-signal-500 font-semibold mb-3">
+                Free · Across India
+              </span>
+              <h3 className="font-display font-bold text-white text-xl lg:text-2xl tracking-tight-display leading-snug">
+                Book a free site survey
+              </h3>
+              <p className="mt-2 text-white/55 text-[13px] leading-relaxed">
+                Our engineers visit your facility, assess the scope, and deliver a
+                detailed move plan — at zero cost.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 mt-4 text-signal-500 text-sm font-semibold group-hover:gap-3 transition-all duration-200">
+              Get started
+              <ArrowRight size={14} weight="bold" />
+            </div>
+          </motion.a>
         </div>
       </div>
     </section>
-  );
-}
-
-function ServiceCard({
-  service,
-  className,
-  large = false,
-}: {
-  service: (typeof services)[number];
-  className?: string;
-  large?: boolean;
-}) {
-  const Icon = ICONS[service.slug] ?? Truck;
-  const idx = services.indexOf(service) + 1;
-
-  return (
-    <a
-      href={`#service-${service.slug}`}
-      className={cn(
-        "group relative flex flex-col bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-elevated hover:border-slate-200",
-        large ? "p-10 lg:p-12 min-h-[460px]" : "p-8 min-h-[300px]",
-        className
-      )}
-    >
-      <div className="flex items-start justify-between">
-        <div
-          className={cn(
-            "grid place-items-center rounded-lg border border-slate-100 bg-canvas-50 transition-colors duration-300 group-hover:bg-ink-900 group-hover:border-ink-900",
-            large ? "h-14 w-14" : "h-12 w-12"
-          )}
-        >
-          <Icon
-            size={large ? 26 : 22}
-            weight="duotone"
-            className="text-ink-900 transition-colors duration-300 group-hover:text-signal-500"
-          />
-        </div>
-        <span className="num text-[11px] uppercase tracking-[0.18em] text-slate-400">
-          / {String(idx).padStart(2, "0")}
-        </span>
-      </div>
-
-      <div className={cn("flex-1 flex flex-col justify-end", large ? "mt-12" : "mt-10")}>
-        <h3
-          className={cn(
-            "font-display font-bold text-ink-900 tracking-tight-display",
-            large ? "text-4xl lg:text-5xl leading-[1.04]" : "text-2xl leading-[1.15]"
-          )}
-        >
-          {service.title}
-        </h3>
-        <p
-          className={cn(
-            "mt-4 text-slate-600 leading-relaxed",
-            large ? "text-lg max-w-xl" : "text-[15px]"
-          )}
-        >
-          {service.blurb}
-        </p>
-
-        <div className="mt-7 pt-5 border-t border-slate-100 flex items-end justify-between">
-          <div>
-            <p className="num text-2xl font-bold text-ink-900">{service.stat}</p>
-            <p className="num mt-1 text-[10px] uppercase tracking-[0.16em] text-slate-500">
-              {service.statLabel}
-            </p>
-          </div>
-          <div className="grid h-10 w-10 place-items-center rounded-lg bg-canvas-50 text-ink-900 transition-all duration-200 ease-premium group-hover:bg-signal-500 group-hover:text-white group-hover:rotate-45">
-            <ArrowUpRight size={16} weight="bold" />
-          </div>
-        </div>
-      </div>
-    </a>
   );
 }
