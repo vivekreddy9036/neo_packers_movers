@@ -6,10 +6,10 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Industries } from "@/components/sections/Industries";
-import { FAQ } from "@/components/sections/FAQ";
 import { LeadForm } from "@/components/sections/LeadForm";
 import { Footer } from "@/components/Footer";
 import { StickyCTA } from "@/components/StickyCTA";
+import { FloatingFAQ } from "@/components/FloatingFAQ";
 
 export default function HomePage() {
   return (
@@ -23,11 +23,11 @@ export default function HomePage() {
         <Process />
         <Testimonials />
         <Industries />
-        <FAQ />
         <LeadForm />
       </main>
       <Footer />
       <StickyCTA />
+      <FloatingFAQ />
     </>
   );
 }

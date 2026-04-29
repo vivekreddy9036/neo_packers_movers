@@ -1,95 +1,86 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Plus, Phone } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
+import { User } from "@phosphor-icons/react";
 import { faqs } from "@/lib/data";
-import { SITE } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-
   return (
-    <section id="faq" className="section-py bg-canvas">
+    <section id="faq" className="section-py bg-canvas-50/60">
       <div className="container-x">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-          <div className="lg:col-span-4">
-            <p className="display-eyebrow mb-4">Common questions</p>
-            <h2 className="display-h2">
-              The answers
-              <br />
-              <span className="text-slate-500">procurement teams ask.</span>
-            </h2>
-            <p className="lead mt-6">
-              Can&rsquo;t find your question? Speak to a specialist — most
-              callers reach an answer in under 90 seconds.
-            </p>
-            <a
-              href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-900 group"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-canvas-50 border border-slate-100 group-hover:bg-ink-900 group-hover:text-white transition-colors">
-                <Phone size={14} weight="bold" />
-              </span>
-              <span className="num">{SITE.phone}</span>
-            </a>
+        <div className="text-center mb-12">
+          <p className="display-eyebrow mb-4">Common questions</p>
+          <h2 className="display-h2">
+            Answers, <span className="text-slate-500">instantly.</span>
+          </h2>
+        </div>
+
+        <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-xl overflow-hidden shadow-elevated">
+          {/* Bot header */}
+          <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100 bg-canvas-50">
+            <BotAvatar size={10} />
+            <div>
+              <p className="font-semibold text-ink-900 text-sm">Neo Support</p>
+              <p className="flex items-center gap-1.5 text-xs text-slate-500">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 inline-block" />
+                Online · replies instantly
+              </p>
+            </div>
           </div>
 
-          <div className="lg:col-span-8">
-            <div className="space-y-3">
-              {faqs.map((faq, i) => {
-                const isOpen = open === i;
-                return (
-                  <div
-                    key={i}
-                    className={`bg-white border rounded-xl transition-all duration-300 ${
-                      isOpen
-                        ? "border-slate-200 shadow-soft"
-                        : "border-slate-100 hover:border-slate-200"
-                    }`}
-                  >
-                    <button
-                      onClick={() => setOpen(isOpen ? null : i)}
-                      className="w-full flex items-start justify-between gap-6 px-6 py-6 md:px-7 text-left"
-                      aria-expanded={isOpen}
-                    >
-                      <span className="font-display font-semibold text-ink-900 text-lg md:text-xl tracking-tight-display pr-4">
-                        {faq.q}
-                      </span>
-                      <span
-                        className={`grid h-9 w-9 flex-shrink-0 place-items-center rounded-full transition-all duration-300 ease-premium ${
-                          isOpen
-                            ? "bg-signal-500 text-white rotate-45"
-                            : "bg-canvas-50 text-ink-900"
-                        }`}
-                      >
-                        <Plus size={16} weight="bold" />
-                      </span>
-                    </button>
-                    <AnimatePresence initial={false}>
-                      {isOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease }}
-                          className="overflow-hidden"
-                        >
-                          <p className="px-6 md:px-7 pb-7 pr-16 text-slate-600 leading-relaxed text-base max-w-2xl">
-                            {faq.a}
-                          </p>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+          {/* Message thread */}
+          <div className="p-5 space-y-6 max-h-[600px] overflow-y-auto scroll-smooth">
+            {faqs.map((faq, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, ease, delay: i * 0.04 }}
+                className="space-y-3"
+              >
+                {/* User question — right */}
+                <div className="flex items-end justify-end gap-2.5">
+                  <div className="bg-ink-900 text-white text-[14px] leading-relaxed px-4 py-3 rounded-2xl rounded-br-sm max-w-[82%]">
+                    {faq.q}
                   </div>
-                );
-              })}
-            </div>
+                  <div className="h-8 w-8 flex-shrink-0 rounded-full bg-slate-200 grid place-items-center">
+                    <User size={14} weight="bold" className="text-slate-500" />
+                  </div>
+                </div>
+
+                {/* Bot answer — left */}
+                <div className="flex items-end gap-2.5">
+                  <BotAvatar size={8} />
+                  <div className="bg-slate-100 text-slate-700 text-[14px] leading-relaxed px-4 py-3 rounded-2xl rounded-bl-sm max-w-[82%]">
+                    {faq.a}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function BotAvatar({ size }: { size: number }) {
+  return (
+    <div
+      className={`h-${size} w-${size} flex-shrink-0 rounded-full bg-ink-900 overflow-hidden grid place-items-center`}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/neo-icon.png"
+        alt="Neo"
+        className="h-full w-full object-cover"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+        }}
+      />
+    </div>
   );
 }

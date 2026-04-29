@@ -9,7 +9,6 @@ const NAV = [
   { href: "#services", label: "Services" },
   { href: "#industries", label: "Industries" },
   { href: "#why-us", label: "Why Neo" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export function Header() {
