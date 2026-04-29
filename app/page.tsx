@@ -2,7 +2,6 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/sections/Hero";
 import { TrustBar } from "@/components/sections/TrustBar";
 import { Services } from "@/components/sections/Services";
-import { Metrics } from "@/components/sections/Metrics";
 import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -20,7 +19,6 @@ export default function HomePage() {
         <Hero />
         <TrustBar />
         <Services />
-        <Metrics />
         <WhyChooseUs />
         <Process />
         <Testimonials />
