@@ -13,6 +13,7 @@ export const services = [
     blurb: "Vibration-rated crating built for road, rail, and sea.",
     stat: "12,840",
     statLabel: "Crates engineered",
+    feature: false,
   },
   {
     slug: "export-packing",
@@ -20,6 +21,7 @@ export const services = [
     blurb: "IPPC-stamped, fumigated, fully CHA-cleared.",
     stat: "ISPM-15",
     statLabel: "Compliance standard",
+    feature: false,
   },
   {
     slug: "custom-crating",
@@ -27,6 +29,7 @@ export const services = [
     blurb: "Engineered to spec at our 18,000 sq ft workshop.",
     stat: "18k sq ft",
     statLabel: "In-house workshop",
+    feature: false,
   },
   {
     slug: "office-relocation",
@@ -34,8 +37,9 @@ export const services = [
     blurb: "IT-grade handling for corporate moves under 48 hours.",
     stat: "<48 hrs",
     statLabel: "Avg corporate turnaround",
+    feature: false,
   },
-] as const;
+];
 
 export const metrics = [
   { value: "21", label: "Years of operations", suffix: "" },

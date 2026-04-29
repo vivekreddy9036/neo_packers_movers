@@ -21,7 +21,11 @@ export type StoredLead = Lead & {
   ip: string | null;
 };
 
-const DATA_DIR = path.resolve(process.cwd(), "data");
+// /tmp is the only writable dir on Vercel serverless; local dev uses ./data
+const DATA_DIR =
+  process.env.NODE_ENV === "production"
+    ? "/tmp"
+    : path.resolve(process.cwd(), "data");
 const FILE = path.join(DATA_DIR, "leads.json");
 
 async function ensureFile() {

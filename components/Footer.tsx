@@ -1,5 +1,7 @@
+"use client";
+
+import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react";
 import { SITE } from "@/lib/utils";
-import { Phone, EnvelopeSimple, MapPin } from "@phosphor-icons/react/dist/ssr";
 
 const COLS = [
   {

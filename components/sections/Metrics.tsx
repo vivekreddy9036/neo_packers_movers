@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useMotionValueEvent, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { metrics } from "@/lib/data";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -64,13 +64,19 @@ function Counter({ target }: { target: string }) {
   const isFloat = target.includes(".");
   const motionVal = useMotionValue(0);
   const spring = useSpring(motionVal, { stiffness: 60, damping: 18 });
-  const display = useTransform(spring, (v) => {
-    return isFloat ? v.toFixed(1) : Math.round(v).toLocaleString("en-IN");
+  const [text, setText] = useState("0");
+
+  useMotionValueEvent(spring, "change", (latest) => {
+    setText(
+      isFloat
+        ? latest.toFixed(1)
+        : Math.round(latest).toLocaleString("en-IN")
+    );
   });
 
   useEffect(() => {
     if (inView) motionVal.set(num);
   }, [inView, num, motionVal]);
 
-  return <motion.span ref={ref}>{display}</motion.span>;
+  return <span ref={ref}>{text}</span>;
 }
