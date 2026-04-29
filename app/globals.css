@@ -2,16 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Spacing tokens ─────────────────────────────────────── */
 @layer base {
   :root {
-    --container-px: 32px;
-    --section-py: 128px;
+    --container-px: 24px;
+    --section-py:   96px;
   }
 
   @media (max-width: 768px) {
     :root {
       --container-px: 20px;
-      --section-py: 80px;
+      --section-py:   72px;
     }
   }
 
@@ -24,36 +25,30 @@
 
   body {
     @apply bg-canvas text-slate-700 font-sans;
-    font-feature-settings: "ss01", "cv11", "cv05";
+    font-feature-settings: "ss01", "cv11";
   }
 
   ::selection {
-    @apply bg-navy-900 text-white;
+    @apply bg-ink-900 text-white;
   }
 
-  ::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track  { @apply bg-canvas-50; }
+  ::-webkit-scrollbar-thumb  {
+    @apply rounded bg-slate-200 border-[3px] border-canvas-50 bg-clip-padding;
   }
-  ::-webkit-scrollbar-track {
-    @apply bg-canvas-50;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-slate-200 rounded-full border-[3px] border-canvas-50 bg-clip-padding;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-300;
-  }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-300; }
 }
 
+/* ─── Layout utilities ───────────────────────────────────── */
 @layer components {
   .container-px {
-    padding-left: var(--container-px);
+    padding-left:  var(--container-px);
     padding-right: var(--container-px);
   }
 
   .section-py {
-    padding-top: var(--section-py);
+    padding-top:    var(--section-py);
     padding-bottom: var(--section-py);
   }
 
@@ -61,102 +56,135 @@
     @apply mx-auto w-full max-w-container container-px;
   }
 
+  /* ─── Typography scale ─────────────────────────────────── */
+
+  /* H1: 48–64px — cinematic hero headline */
   .display-h1 {
-    @apply font-display font-bold tracking-tight-display text-ink-900;
-    font-size: clamp(3rem, 6.5vw, 6.25rem);
-    line-height: 0.96;
-    letter-spacing: -0.04em;
+    @apply font-display font-bold text-ink-900;
+    font-size: clamp(3rem, 5.5vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
   }
 
+  /* H2: 32–40px — section headings */
   .display-h2 {
-    @apply font-display font-bold tracking-tight-display text-ink-900;
-    font-size: clamp(2.25rem, 4.2vw, 3.5rem);
-    line-height: 1.04;
-    letter-spacing: -0.035em;
+    @apply font-display font-bold text-ink-900;
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
   }
 
+  /* H3: 24–28px — card titles */
+  .display-h3 {
+    @apply font-display font-semibold text-ink-900;
+    font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  /* Eyebrow label — mono, signal-orange, all-caps */
   .display-eyebrow {
-    @apply font-mono text-[11px] uppercase tracking-[0.18em] text-signal-600 font-medium;
+    @apply font-mono text-[11px] uppercase tracking-[0.2em] text-signal-600 font-medium;
   }
 
+  /* Body lead — 16–18px */
   .lead {
-    @apply text-lg text-slate-600 leading-[1.65];
+    @apply text-slate-600 leading-[1.7];
+    font-size: clamp(1rem, 1.4vw, 1.125rem);
   }
+
+  /* ─── Button system — h-12 / px-6 / rounded-lg / semibold ─ */
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:bg-navy-800 hover:-translate-y-[1px] hover:shadow-elevated active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2
+           h-12 px-6 rounded-lg
+           bg-ink-900 text-white text-sm font-semibold
+           transition-all duration-200 ease-premium
+           hover:bg-navy-800 hover:-translate-y-px hover:shadow-elevated
+           active:translate-y-0;
   }
 
   .btn-cta {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-signal-500 px-7 py-4 text-sm font-semibold text-white transition-all duration-200 ease-premium hover:bg-signal-600 hover:-translate-y-[1px] hover:shadow-glow active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2
+           h-12 px-6 rounded-lg
+           bg-signal-500 text-white text-sm font-semibold
+           transition-all duration-200 ease-premium
+           hover:bg-signal-600 hover:-translate-y-px hover:shadow-glow
+           active:translate-y-0;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-4 text-sm font-semibold text-ink-900 transition-all duration-200 ease-premium hover:border-slate-300 hover:bg-canvas-50 hover:-translate-y-[1px];
+    @apply inline-flex items-center justify-center gap-2
+           h-12 px-6 rounded-lg
+           border border-slate-200 bg-white text-ink-900 text-sm font-semibold
+           transition-all duration-200 ease-premium
+           hover:border-slate-300 hover:bg-canvas-50 hover:-translate-y-px
+           active:translate-y-0;
   }
 
-  .hairline {
-    @apply border-slate-100;
+  /* Ghost variant on dark hero background */
+  .btn-ghost-dark {
+    @apply inline-flex items-center justify-center gap-2
+           h-12 px-6 rounded-lg
+           border border-white/30 bg-transparent text-white text-sm font-semibold
+           transition-all duration-200 ease-premium
+           hover:border-white hover:bg-white/10 hover:-translate-y-px
+           active:translate-y-0;
   }
+
+  /* ─── Card / Surface ────────────────────────────────────── */
+
+  .surface {
+    @apply bg-white border border-slate-100 rounded-xl shadow-card;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-md
+           bg-canvas-50 border border-slate-100 px-3 py-1
+           text-xs text-slate-600 font-medium;
+  }
+
+  /* ─── Number display ────────────────────────────────────── */
 
   .num {
     @apply font-mono tabular-nums;
     font-feature-settings: "tnum", "ss01";
   }
-
-  .surface {
-    @apply bg-white border border-slate-100 rounded-2xl;
-  }
-
-  .badge {
-    @apply inline-flex items-center gap-1.5 rounded-full bg-canvas-50 border border-slate-100 px-3 py-1 text-xs text-slate-600 font-medium;
-  }
 }
 
-/* Marquee gradient mask */
+/* ─── Marquee gradient mask ──────────────────────────────── */
 .marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    black 8%,
-    black 92%,
-    transparent
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image:         linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+/* ─── Hero background helpers ────────────────────────────── */
+
+/* Directional dark overlay (left = dark, right = transparent) */
+.hero-overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(10, 22, 40, 0.92) 0%,
+    rgba(10, 22, 40, 0.78) 40%,
+    rgba(10, 22, 40, 0.40) 100%
   );
 }
 
-/* Subtle dot grid for hero / hero-like sections */
+/* Subtle dot grid */
 .bg-dots {
-  background-image: radial-gradient(
-    rgba(10, 37, 64, 0.08) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(rgba(10, 37, 64, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Soft top-down glow gradient for hero */
+/* Light section soft glow */
 .bg-hero-soft {
   background:
-    radial-gradient(
-      1200px 600px at 20% -10%,
-      rgba(11, 95, 255, 0.08),
-      transparent 60%
-    ),
-    radial-gradient(
-      900px 500px at 90% 10%,
-      rgba(255, 106, 0, 0.06),
-      transparent 70%
-    ),
+    radial-gradient(1200px 600px at 20% -10%, rgba(11,95,255,0.06), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(255,106,0,0.05), transparent 70%),
     linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
 }
 
-/* Strong horizontal divider sweep used between sections */
+/* Section divider sweep */
 .divider-line {
   height: 1px;
   background: linear-gradient(

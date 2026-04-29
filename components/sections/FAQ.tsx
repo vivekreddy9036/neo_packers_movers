@@ -44,7 +44,7 @@ export function FAQ() {
                 return (
                   <div
                     key={i}
-                    className={`bg-white border rounded-2xl transition-all duration-300 ${
+                    className={`bg-white border rounded-xl transition-all duration-300 ${
                       isOpen
                         ? "border-slate-200 shadow-soft"
                         : "border-slate-100 hover:border-slate-200"

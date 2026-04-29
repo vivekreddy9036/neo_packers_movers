@@ -42,7 +42,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-4">
             <div className="flex items-center gap-2.5">
-              <div className="h-9 w-9 grid place-items-center bg-ink-900 rounded-xl">
+              <div className="h-9 w-9 grid place-items-center bg-ink-900 rounded-lg">
                 <span className="font-display font-black text-white text-base">
                   N
                 </span>

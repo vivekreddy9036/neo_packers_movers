@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { leadSchema, createLead, listLeads } from "@/lib/leadStorage";
 
-// Force Node.js runtime so we can use fs (not Edge)
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   let body: unknown;

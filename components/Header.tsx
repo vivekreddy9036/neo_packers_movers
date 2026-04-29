@@ -38,7 +38,7 @@ export function Header() {
     >
       <div className="container-x flex items-center justify-between py-4">
         <a href="#" className="flex items-center gap-2.5 group">
-          <div className="h-9 w-9 grid place-items-center bg-ink-900 rounded-xl">
+          <div className="h-9 w-9 grid place-items-center bg-ink-900 rounded-lg">
             <span className="font-display font-black text-white text-base">
               N
             </span>
@@ -68,7 +68,7 @@ export function Header() {
             <Phone size={14} weight="bold" />
             {SITE.phone}
           </a>
-          <a href="#lead-form" className="btn-cta py-3 text-[13px]">
+          <a href="#lead-form" className="btn-cta">
             Get a Quote
           </a>
         </div>

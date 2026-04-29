@@ -24,7 +24,7 @@ export function CaseStudies() {
             className="text-sm font-semibold text-ink-900 inline-flex items-center gap-2 group"
           >
             View all projects
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white transition-all duration-200 group-hover:bg-ink-900 group-hover:border-ink-900 group-hover:text-white">
+            <span className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 bg-white transition-all duration-200 group-hover:bg-ink-900 group-hover:border-ink-900 group-hover:text-white">
               <ArrowUpRight size={14} weight="bold" />
             </span>
           </a>
@@ -39,7 +39,7 @@ export function CaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.6, ease, delay: i * 0.08 }}
-              className="group flex flex-col bg-white border border-slate-100 rounded-3xl overflow-hidden hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 ease-premium"
+              className="group flex flex-col bg-white border border-slate-100 rounded-xl overflow-hidden hover:shadow-elevated hover:-translate-y-1 transition-all duration-300 ease-premium"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-canvas-50">
                 <img

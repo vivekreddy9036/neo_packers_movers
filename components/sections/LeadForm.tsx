@@ -128,7 +128,7 @@ export function LeadForm() {
 
           {/* Form card */}
           <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-100 rounded-3xl p-8 md:p-10 shadow-elevated">
+            <div className="bg-white border border-slate-100 rounded-xl p-8 md:p-10 shadow-elevated">
               {submitted ? (
                 <SuccessState />
               ) : (
@@ -350,7 +350,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         {label}
       </span>
       <div
-        className={`flex items-stretch border rounded-xl overflow-hidden bg-white transition-colors ${
+        className={`flex items-stretch border rounded-lg overflow-hidden bg-white transition-colors ${
           error
             ? "border-signal-500"
             : "border-slate-200 focus-within:border-ink-900 focus-within:ring-2 focus-within:ring-ink-900/5"

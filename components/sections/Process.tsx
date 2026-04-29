@@ -48,7 +48,7 @@ export function Process() {
               >
                 <div className="relative">
                   <div className="relative h-[88px] flex items-center">
-                    <div className="grid h-[88px] w-[88px] place-items-center rounded-full bg-white border border-slate-100 shadow-soft transition-all duration-300 group-hover:border-signal-500 group-hover:shadow-elevated">
+                    <div className="grid h-[88px] w-[88px] place-items-center rounded-full bg-white border-2 border-slate-200 shadow-soft transition-all duration-300 group-hover:border-signal-500 group-hover:shadow-elevated group-hover:bg-canvas-50">
                       <span className="num text-2xl font-bold text-ink-900">
                         {step.n}
                       </span>

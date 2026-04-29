@@ -37,7 +37,7 @@ export function Industries() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, ease, delay: i * 0.04 }}
-                className="group bg-white border border-slate-100 rounded-2xl p-7 flex flex-col gap-5 min-h-[160px] hover:border-slate-200 hover:shadow-soft hover:-translate-y-1 transition-all duration-300 ease-premium"
+                className="group bg-white border border-slate-100 rounded-xl p-7 flex flex-col gap-5 min-h-[160px] hover:border-slate-200 hover:shadow-soft hover:-translate-y-1 transition-all duration-300 ease-premium"
               >
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-canvas-50 text-ink-900 transition-colors duration-300 group-hover:bg-ink-900 group-hover:text-signal-500">
                   <Icon size={22} weight="duotone" />

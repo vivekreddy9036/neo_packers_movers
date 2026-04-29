@@ -22,7 +22,7 @@ export function WhyChooseUs() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Sticky image */}
           <div className="lg:col-span-5">
-            <div className="relative lg:sticky lg:top-28 aspect-[4/5] overflow-hidden rounded-3xl shadow-elevated">
+            <div className="relative lg:sticky lg:top-28 aspect-[4/5] overflow-hidden rounded-xl shadow-elevated">
               <img
                 src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=1200&q=85"
                 alt="Heavy machinery being lifted"
@@ -52,7 +52,7 @@ export function WhyChooseUs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.55, ease, delay: i * 0.07 }}
-                  className="group bg-white border border-slate-100 rounded-2xl p-7 lg:p-8 hover:border-slate-200 hover:shadow-soft transition-all duration-300"
+                  className="group bg-white border border-slate-100 border-l-4 border-l-signal-500 rounded-xl p-7 lg:p-8 hover:shadow-soft hover:-translate-y-px transition-all duration-300"
                 >
                   <div className="flex items-start gap-6">
                     <span className="num text-signal-500 text-sm font-semibold pt-1 flex-shrink-0">

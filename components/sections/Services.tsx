@@ -78,7 +78,7 @@ function ServiceCard({
     <a
       href={`#service-${service.slug}`}
       className={cn(
-        "group relative flex flex-col bg-white border border-slate-100 rounded-3xl overflow-hidden transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-elevated hover:border-slate-200",
+        "group relative flex flex-col bg-white border border-slate-100 rounded-xl overflow-hidden transition-all duration-300 ease-premium hover:-translate-y-1 hover:shadow-elevated hover:border-slate-200",
         large ? "p-10 lg:p-12 min-h-[460px]" : "p-8 min-h-[300px]",
         className
       )}
@@ -86,7 +86,7 @@ function ServiceCard({
       <div className="flex items-start justify-between">
         <div
           className={cn(
-            "grid place-items-center rounded-2xl border border-slate-100 bg-canvas-50 transition-colors duration-300 group-hover:bg-ink-900 group-hover:border-ink-900",
+            "grid place-items-center rounded-lg border border-slate-100 bg-canvas-50 transition-colors duration-300 group-hover:bg-ink-900 group-hover:border-ink-900",
             large ? "h-14 w-14" : "h-12 w-12"
           )}
         >
@@ -126,7 +126,7 @@ function ServiceCard({
               {service.statLabel}
             </p>
           </div>
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-canvas-50 text-ink-900 transition-all duration-200 ease-premium group-hover:bg-signal-500 group-hover:text-white group-hover:rotate-45">
+          <div className="grid h-10 w-10 place-items-center rounded-lg bg-canvas-50 text-ink-900 transition-all duration-200 ease-premium group-hover:bg-signal-500 group-hover:text-white group-hover:rotate-45">
             <ArrowUpRight size={16} weight="bold" />
           </div>
         </div>
