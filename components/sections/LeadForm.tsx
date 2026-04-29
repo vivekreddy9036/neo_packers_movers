@@ -64,14 +64,33 @@ export function LeadForm() {
     setSubmitting(true);
     setError(null);
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const res = await fetch(
+        "https://formsubmit.co/ajax/vivekreddy9036@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            Name: data.name,
+            Email: data.email,
+            Phone: `+91 ${data.phone}`,
+            "Move Type": data.moveType,
+            From: data.origin,
+            To: data.destination,
+            // FormSubmit config fields
+            _replyto: data.email,
+            _subject: `New Enquiry — ${data.moveType} move | Neo Packers & Movers`,
+            _template: "table",
+            _captcha: "false",
+            _honey: "",
+          }),
+        }
+      );
       const payload = await res.json();
-      if (!res.ok || !payload.ok) {
-        throw new Error(payload.error ?? "Submission failed");
+      if (!res.ok || payload.success !== "true") {
+        throw new Error(payload.message ?? "Submission failed");
       }
       setSubmitted(true);
     } catch (e) {
