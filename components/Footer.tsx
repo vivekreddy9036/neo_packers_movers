@@ -14,7 +14,6 @@ const NAV_COLS = [
       "Office Goods Relocation",
       "On-site Packing & Lashing",
       "Custom Crates & Pallets",
-      "VCI & Shrink Wrapping",
     ],
   },
   {

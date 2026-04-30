@@ -53,15 +53,6 @@ export const services = [
     statLabel: "FHAT treatment plant",
     feature: false,
   },
-  {
-    slug: "vci-shrink-wrapping",
-    title: "VCI & Shrink Wrapping",
-    blurb:
-      "Advanced anti-corrosion and climate control — VCI films, HDPE covers, tarpaulins, and shrink wrapping where moisture and rust meet their match.",
-    stat: "Anti-rust",
-    statLabel: "VCI barrier protection",
-    feature: false,
-  },
 ];
 
 export const metrics = [
@@ -205,7 +196,7 @@ export const faqs = [
   },
   {
     q: "What types of industrial packing services do you offer?",
-    a: "We offer industrial packing & unpacking, heavy machinery relocation, export-ready packing (ISPM-15 compliant), office goods movement, on-site packing with container lashing, custom wooden crates/boxes/pallets/saddles, and VCI & shrink wrapping for weatherproofing.",
+    a: "We offer industrial packing & unpacking, heavy machinery relocation, export-ready packing (ISPM-15 compliant), office goods movement, on-site packing with container lashing, and custom wooden crates/boxes/pallets/saddles.",
   },
   {
     q: "What licenses and certifications do you hold?",

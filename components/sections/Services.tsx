@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "@phosphor-icons/react";
 import { services } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
@@ -32,10 +31,6 @@ const BENTO: Record<string, { grid: string; large: boolean }> = {
     grid: "lg:col-start-2 lg:col-span-1 lg:row-start-3 lg:row-span-1",
     large: false,
   },
-  "vci-shrink-wrapping": {
-    grid: "lg:col-start-1 lg:col-span-2 lg:row-start-4 lg:row-span-1",
-    large: false,
-  },
 };
 
 export function Services() {
@@ -52,12 +47,12 @@ export function Services() {
             </h2>
           </div>
           <p className="lead max-w-md">
-            Seven specialist disciplines, one accountability chain. Every brief
+            Six specialist disciplines, one accountability chain. Every brief
             ships through the same engineering-grade workflow.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px_220px] gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px] gap-4">
           {services.map((service, i) => {
             const meta = BENTO[service.slug];
             const isLarge = meta?.large ?? false;
@@ -106,32 +101,6 @@ export function Services() {
             );
           })}
 
-          {/* 8th card — CTA */}
-          <motion.a
-            href="#lead-form"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease, delay: 0.35 }}
-            className="group flex flex-col justify-between bg-ink-900 rounded-xl p-7 min-h-[200px] lg:col-start-3 lg:col-span-2 lg:row-start-4 lg:row-span-1 transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
-          >
-            <div>
-              <span className="inline-block text-[10px] num uppercase tracking-[0.18em] text-signal-500 font-semibold mb-3">
-                Free · Across India
-              </span>
-              <h3 className="font-display font-bold text-white text-xl lg:text-2xl tracking-tight-display leading-snug">
-                Book a free site survey
-              </h3>
-              <p className="mt-2 text-white/55 text-[13px] leading-relaxed">
-                Our engineers visit your facility, assess the scope, and deliver a
-                detailed move plan — at zero cost.
-              </p>
-            </div>
-            <div className="flex items-center gap-2 mt-4 text-signal-500 text-sm font-semibold group-hover:gap-3 transition-all duration-200">
-              Get started
-              <ArrowRight size={14} weight="bold" />
-            </div>
-          </motion.a>
         </div>
       </div>
     </section>

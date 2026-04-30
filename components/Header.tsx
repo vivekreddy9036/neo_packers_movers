@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { List, X, Phone } from "@phosphor-icons/react";
+import Image from "next/image";
 import { cn, SITE } from "@/lib/utils";
 
 const NAV = [
@@ -36,14 +37,14 @@ export function Header() {
     >
       <div className="container-x flex items-center justify-between py-4">
         <a href="#" className="flex items-center gap-2.5 group">
-          <div className="h-9 w-9 grid place-items-center bg-ink-900 rounded-lg">
-            <span className="font-display font-black text-white text-base">
-              N
-            </span>
-          </div>
-          <span className="font-display font-bold text-ink-900 text-lg tracking-tight-display">
-            Neo<span className="text-signal-500">.</span>Industrial
-          </span>
+          <Image
+            src="/neo-logo.png"
+            alt="Neo Packers & Movers"
+            width={200}
+            height={90}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-9">
