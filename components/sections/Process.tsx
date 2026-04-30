@@ -67,10 +67,6 @@ export function Process() {
               <span className="text-slate-500">every move.</span>
             </h2>
           </div>
-          <p className="lead max-w-md">
-            From the first site walk to the final installation sign-off — the
-            same engineering discipline, every time.
-          </p>
         </div>
 
         {/* ═══════════════════════════════════════════════

@@ -48,10 +48,6 @@ export function Services() {
               <span className="text-slate-500">that can&rsquo;t fail.</span>
             </h2>
           </div>
-          <p className="lead max-w-md">
-            Six specialist disciplines, one accountability chain. Every brief
-            ships through the same engineering-grade workflow.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px] gap-4">
