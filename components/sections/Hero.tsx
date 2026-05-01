@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "@phosphor-icons/react";
 import { SITE } from "@/lib/utils";
@@ -15,33 +16,44 @@ const TRUST = [
 
 export function Hero() {
   return (
-    <section className="relative h-screen min-h-[680px] w-full overflow-hidden bg-ink-900">
-      {/* Background image — swap for <video> when /hero.mp4 is available */}
-      <img
-        src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=2000&q=85"
-        alt="Industrial crane at work"
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        loading="eager"
+    <section className="relative h-screen min-h-[680px] w-full overflow-hidden bg-white flex flex-col">
+      {/* Full-bleed background image */}
+      <Image
+        src="/hero-truck.png"
+        alt="Neo Packers fleet on highway"
+        fill
+        className="object-cover"
+        style={{ objectPosition: "65% center" }}
+        priority
       />
 
-      {/* Dark directional overlay */}
-      <div className="absolute inset-0 hero-overlay" />
+      {/* Horizontal overlay: opaque white left (text readable) → transparent right (image shows) */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.92) 28%, rgba(255,255,255,0.65) 48%, rgba(255,255,255,0.20) 68%, rgba(255,255,255,0) 82%)",
+        }}
+      />
 
-      {/* Subtle noise / dot texture */}
-      <div className="absolute inset-0 bg-dots opacity-[0.15]" />
-
-      {/* Bottom trust-bar gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-ink-900/80 to-transparent pointer-events-none" />
+      {/* Bottom fade: keeps trust strip readable over the image */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(255,255,255,0.90) 0%, rgba(255,255,255,0.50) 50%, rgba(255,255,255,0) 100%)",
+        }}
+      />
 
       {/* Content */}
-      <div className="relative h-full flex flex-col container-x">
+      <div className="relative flex-1 flex flex-col container-x">
         {/* Centred block */}
         <div className="flex-1 flex flex-col justify-center pt-24 pb-8 max-w-3xl">
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease }}
-            className="display-eyebrow text-white/60 mb-6"
+            className="display-eyebrow mb-6"
           >
             EST. 1999 &nbsp;·&nbsp; ISO 9001 &nbsp;·&nbsp; IATA &amp; FIATA CERTIFIED
           </motion.p>
@@ -50,7 +62,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.08 }}
-            className="display-h1 text-white"
+            className="display-h1"
           >
             Packed for Safety,
             <br />
@@ -61,8 +73,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.2 }}
-            className="mt-6 text-white/70 max-w-xl leading-[1.7]"
-            style={{ fontSize: "clamp(1rem, 1.4vw, 1.125rem)" }}
+            className="mt-6 lead max-w-xl"
           >
             Safeguarding your most vital assets is not just logistics — it&rsquo;s
             an art. An art perfected over 25 years, where every nuance of
@@ -85,33 +96,33 @@ export function Hero() {
             </a>
             <a
               href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-              className="btn-ghost-dark"
+              className="btn-ghost"
             >
               <Phone size={16} weight="bold" />
               Call now &nbsp; {SITE.phone}
             </a>
           </motion.div>
         </div>
-
-        {/* Trust strip — pinned to bottom */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease, delay: 0.5 }}
-          className="pb-10 grid grid-cols-2 md:grid-cols-4 gap-px border-t border-white/10"
-        >
-          {TRUST.map((t) => (
-            <div key={t.label} className="pt-5 pr-6">
-              <p className="num text-2xl md:text-3xl font-bold text-white">
-                {t.value}
-              </p>
-              <p className="num mt-1 text-[11px] uppercase tracking-[0.16em] text-white/50">
-                {t.label}
-              </p>
-            </div>
-          ))}
-        </motion.div>
       </div>
+
+      {/* Trust strip — pinned to bottom, full width */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease, delay: 0.5 }}
+        className="relative pb-10 container-x grid grid-cols-2 md:grid-cols-4 gap-px border-t border-slate-100"
+      >
+        {TRUST.map((t) => (
+          <div key={t.label} className="pt-5 pr-6">
+            <p className="num text-2xl md:text-3xl font-bold text-ink-900">
+              {t.value}
+            </p>
+            <p className="num mt-1 text-[11px] uppercase tracking-[0.16em] text-slate-500">
+              {t.label}
+            </p>
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }

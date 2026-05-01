@@ -176,6 +176,12 @@
   background-size: 24px 24px;
 }
 
+/* Warm dot grid for white/light hero */
+.bg-dots-light {
+  background-image: radial-gradient(rgba(255, 106, 0, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
 /* Light section soft glow */
 .bg-hero-soft {
   background:
