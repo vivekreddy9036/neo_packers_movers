@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "@phosphor-icons/react";
 import { SITE } from "@/lib/utils";
@@ -18,13 +17,14 @@ export function Hero() {
   return (
     <section className="relative h-screen min-h-[680px] w-full overflow-hidden bg-white flex flex-col">
       {/* Full-bleed background image */}
-      <Image
-        src="/hero-truck.png"
-        alt="Neo Packers fleet on highway"
-        fill
-        className="object-cover"
-        style={{ objectPosition: "65% center" }}
-        priority
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('https://ik.imagekit.io/factamrita/Neo_Packers_Movers/hero-truck.jpg?tr=q-95,f-webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "right 20%",
+          backgroundRepeat: "no-repeat",
+        }}
       />
 
       {/* Horizontal overlay: opaque white left (text readable) → transparent right (image shows) */}

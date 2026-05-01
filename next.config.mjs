@@ -5,7 +5,9 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "cdn.jsdelivr.net" },
+      { protocol: "https", hostname: "ik.imagekit.io" },
     ],
+    qualities: [75, 90, 95],
   },
   async headers() {
     return [

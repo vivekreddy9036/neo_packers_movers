@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   MagnifyingGlass,
   PencilLine,
@@ -32,6 +32,9 @@ export function Process() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
 
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { margin: "-120px" });
+
   // Detect the wrap-around reset (step 5 → 0) so we can snap instantly
   // instead of animating backwards across the whole track.
   const prevActive = useRef(0);
@@ -42,20 +45,20 @@ export function Process() {
     prevActive.current = active;
   });
 
-  // Auto-advance every 2.8 s; pause on hover
+  // Auto-advance every 2.8 s; pause on hover or when off-screen
   useEffect(() => {
-    if (paused) return;
+    if (paused || !isInView) return;
     const t = setInterval(
       () => setActive((a) => (a + 1) % processSteps.length),
       2800
     );
     return () => clearInterval(t);
-  }, [paused]);
+  }, [paused, isInView]);
 
   const transition = isResetting ? INSTANT : SPRING;
 
   return (
-    <section className="section-py bg-canvas relative overflow-hidden">
+    <section ref={sectionRef} className="section-py bg-canvas relative overflow-hidden">
       <div className="container-x relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
