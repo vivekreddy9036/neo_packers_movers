@@ -5,6 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function scrollTo(href: string) {
+  const id = href.replace(/^#/, "");
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
 export const SITE = {
   name: "Neo Packers & Movers",
   phone: "+91 91211 04237",

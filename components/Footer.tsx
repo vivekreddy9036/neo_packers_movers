@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Phone, EnvelopeSimple, MapPin, WhatsappLogo } from "@phosphor-icons/react";
-import { SITE } from "@/lib/utils";
+import { scrollTo, SITE } from "@/lib/utils";
 import { locations } from "@/lib/data";
 
 const SERVICES = [
@@ -38,7 +38,7 @@ export function Footer() {
                 alt="Neo Packers & Movers"
                 width={200}
                 height={90}
-                className="h-10 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
             </div>
             <p className="text-slate-400 text-[15px] leading-relaxed max-w-[340px]">
@@ -113,8 +113,8 @@ export function Footer() {
               {SERVICES.map((s) => (
                 <li key={s}>
                   <a
-                    href="#services"
-                    className="text-slate-400 text-[14px] hover:text-white transition-colors leading-snug"
+                    onClick={() => scrollTo("#services")}
+                    className="text-slate-400 text-[14px] hover:text-white transition-colors leading-snug cursor-pointer"
                   >
                     {s}
                   </a>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "@phosphor-icons/react";
-import { SITE } from "@/lib/utils";
+import { scrollTo, SITE } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -86,7 +86,7 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.32 }}
             className="mt-10 flex flex-col sm:flex-row gap-3"
           >
-            <a href="#lead-form" className="btn-cta group">
+            <a onClick={() => scrollTo("#lead-form")} className="btn-cta group cursor-pointer">
               Get a free quote
               <ArrowRight
                 size={16}

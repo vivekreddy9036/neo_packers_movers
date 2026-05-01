@@ -19,15 +19,14 @@ export function CaseStudies() {
               <span className="text-slate-500">couldn&rsquo;t go wrong.</span>
             </h2>
           </div>
-          <a
-            href="#"
-            className="text-sm font-semibold text-ink-900 inline-flex items-center gap-2 group"
+          <span
+            className="text-sm font-semibold text-ink-900 inline-flex items-center gap-2"
           >
             View all projects
             <span className="grid h-9 w-9 place-items-center rounded-lg border border-slate-200 bg-white transition-all duration-200 group-hover:bg-ink-900 group-hover:border-ink-900 group-hover:text-white">
               <ArrowUpRight size={14} weight="bold" />
             </span>
-          </a>
+          </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

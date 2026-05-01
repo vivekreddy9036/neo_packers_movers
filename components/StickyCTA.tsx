@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { WhatsappLogo, Phone } from "@phosphor-icons/react";
-import { SITE } from "@/lib/utils";
+import { scrollTo, SITE } from "@/lib/utils";
 
 export function StickyCTA() {
   const [show, setShow] = useState(false);
@@ -52,8 +52,8 @@ export function StickyCTA() {
             className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 grid grid-cols-2 shadow-elevated"
           >
             <a
-              href="#lead-form"
-              className="grid place-items-center py-4 text-sm font-semibold text-ink-900 border-r border-slate-100"
+              onClick={() => scrollTo("#lead-form")}
+              className="grid place-items-center py-4 text-sm font-semibold text-ink-900 border-r border-slate-100 cursor-pointer"
             >
               Get Quote
             </a>

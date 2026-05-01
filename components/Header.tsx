@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { List, X, Phone, ArrowRight } from "@phosphor-icons/react";
 import Image from "next/image";
-import { cn, SITE } from "@/lib/utils";
+import { cn, scrollTo, SITE } from "@/lib/utils";
 
 const NAV = [
   { href: "#services",   label: "Services"     },
@@ -64,7 +64,7 @@ export function Header() {
         <div className="container-x flex items-center justify-between h-[68px]">
 
           {/* Logo */}
-          <a href="#" className="flex-shrink-0">
+          <a href="/" className="flex-shrink-0">
             <Image
               src="/neo-logo.png"
               alt="Neo Packers & Movers"
@@ -82,8 +82,8 @@ export function Header() {
               return (
                 <a
                   key={item.href}
-                  href={item.href}
-                  className="relative px-4 py-2 rounded-lg group"
+                  onClick={() => scrollTo(item.href)}
+                  className="relative px-4 py-2 rounded-lg group cursor-pointer"
                 >
                   {/* Hover pill background */}
                   <span className="absolute inset-0 rounded-lg bg-slate-100/0 group-hover:bg-slate-100/80 transition-colors duration-200" />
@@ -121,7 +121,7 @@ export function Header() {
               {SITE.phone}
             </a>
 
-            <a href="#lead-form" className="btn-cta text-sm">
+            <a onClick={() => scrollTo("#lead-form")} className="btn-cta text-sm cursor-pointer">
               Get a Quote
             </a>
           </div>
@@ -171,11 +171,10 @@ export function Header() {
               {NAV.map((item, i) => (
                 <motion.a
                   key={item.href}
-                  href={item.href}
                   initial={{ opacity: 0, x: -14 }}
                   animate={{ opacity: 1, x: 0   }}
                   transition={{ duration: 0.2, ease, delay: i * 0.045 }}
-                  onClick={() => setOpen(false)}
+                  onClick={() => { scrollTo(item.href); setOpen(false); }}
                   className={cn(
                     "flex items-center justify-between py-4 border-b border-slate-50 text-[15px] font-medium group",
                     active === item.href ? "text-signal-500" : "text-ink-900"
@@ -206,9 +205,8 @@ export function Header() {
                   {SITE.phone}
                 </a>
                 <a
-                  href="#lead-form"
-                  onClick={() => setOpen(false)}
-                  className="btn-cta w-full justify-center"
+                  onClick={() => { scrollTo("#lead-form"); setOpen(false); }}
+                  className="btn-cta w-full justify-center cursor-pointer"
                 >
                   Get a Quote
                 </a>

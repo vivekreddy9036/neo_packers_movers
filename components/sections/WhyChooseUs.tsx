@@ -11,6 +11,7 @@ import {
   Diamond,
 } from "@phosphor-icons/react";
 import { whyChooseUs } from "@/lib/data";
+import { scrollTo } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -77,7 +78,7 @@ export function WhyChooseUs() {
           transition={{ duration: 0.5, ease, delay: 0.4 }}
           className="mt-10"
         >
-          <a href="#lead-form" className="btn-primary group">
+          <a onClick={() => scrollTo("#lead-form")} className="btn-primary group cursor-pointer">
             Get a tailored proposal
             <ArrowRight
               size={16}
