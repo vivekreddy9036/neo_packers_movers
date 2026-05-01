@@ -65,7 +65,7 @@ export function LeadForm() {
     setError(null);
     try {
       const res = await fetch(
-        "https://formsubmit.co/ajax/vivekreddy9036@gmail.com",
+        "https://formsubmit.co/ajax/shekarreddyneo@gmail.com",
         {
           method: "POST",
           headers: {
