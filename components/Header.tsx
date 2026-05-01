@@ -70,7 +70,7 @@ export function Header() {
               alt="Neo Packers & Movers"
               width={200}
               height={90}
-              className="h-10 w-auto object-contain"
+              className="h-14 w-auto object-contain"
               priority
             />
           </a>

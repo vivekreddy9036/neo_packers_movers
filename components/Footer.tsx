@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Phone, EnvelopeSimple, MapPin, WhatsappLogo } from "@phosphor-icons/react";
 import { SITE } from "@/lib/utils";
 import { locations } from "@/lib/data";
@@ -31,13 +32,14 @@ export function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="h-10 w-10 grid place-items-center bg-signal-500 rounded-xl flex-shrink-0">
-                <span className="font-display font-black text-white text-lg leading-none">N</span>
-              </div>
-              <span className="font-display font-bold text-white text-xl tracking-tight-display">
-                Neo<span className="text-signal-500">.</span>Packers &amp; Movers
-              </span>
+            <div className="inline-flex items-center bg-white rounded-xl px-4 py-2.5 mb-5">
+              <Image
+                src="/neo-logo.png"
+                alt="Neo Packers & Movers"
+                width={200}
+                height={90}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="text-slate-400 text-[15px] leading-relaxed max-w-[340px]">
               India&rsquo;s trusted industrial packing specialists. We move what

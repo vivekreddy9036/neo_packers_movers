@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { X, User, ChatTeardropDots } from "@phosphor-icons/react";
 import { faqs } from "@/lib/data";
@@ -28,9 +28,21 @@ const msgVariants: Variants = {
 export function FloatingFAQ() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = useCallback(() => setIsOpen((p) => !p), []);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutside);
+    return () => document.removeEventListener("mousedown", handleOutside);
+  }, [isOpen]);
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
+    <div ref={containerRef} className="fixed bottom-6 left-6 z-50 flex flex-col items-start gap-3">
       <AnimatePresence>
         {isOpen && (
           <motion.div

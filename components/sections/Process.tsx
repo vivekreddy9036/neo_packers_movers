@@ -13,7 +13,7 @@ import {
 import { processSteps } from "@/lib/data";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-const SPRING = { type: "spring" as const, stiffness: 65, damping: 28 };
+const SMOOTH  = { duration: 0.9, ease: [0.4, 0, 0.2, 1] };
 const INSTANT = { duration: 0 };
 
 const STAGE_ICONS = [
@@ -45,17 +45,17 @@ export function Process() {
     prevActive.current = active;
   });
 
-  // Auto-advance every 2.8 s; pause on hover or when off-screen
+  // Auto-advance every 1 s; pause on hover or when off-screen
   useEffect(() => {
     if (paused || !isInView) return;
     const t = setInterval(
       () => setActive((a) => (a + 1) % processSteps.length),
-      2800
+      1000
     );
     return () => clearInterval(t);
   }, [paused, isInView]);
 
-  const transition = isResetting ? INSTANT : SPRING;
+  const transition = isResetting ? INSTANT : SMOOTH;
 
   return (
     <section ref={sectionRef} id="process" className="section-py bg-canvas relative overflow-hidden">
@@ -172,8 +172,8 @@ export function Process() {
                         animate={{ scale: isCurrent ? 1.18 : 1 }}
                         transition={{
                           type: "spring",
-                          stiffness: 220,
-                          damping: 18,
+                          stiffness: 420,
+                          damping: 28,
                         }}
                       >
                         <Icon
