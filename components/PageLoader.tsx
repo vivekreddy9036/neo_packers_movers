@@ -49,7 +49,7 @@ export function PageLoader() {
               alt="Neo Packers & Movers"
               width={180}
               height={80}
-              className="h-12 w-auto object-contain"
+              className="h-30 w-auto object-contain"
               priority
             />
 
