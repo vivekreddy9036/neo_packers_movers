@@ -10,10 +10,12 @@ import { LeadForm } from "@/components/sections/LeadForm";
 import { Footer } from "@/components/Footer";
 import { StickyCTA } from "@/components/StickyCTA";
 import { FloatingFAQ } from "@/components/FloatingFAQ";
+import { PageLoader } from "@/components/PageLoader";
 
 export default function HomePage() {
   return (
     <>
+      <PageLoader />
       <Header />
       <main className="bg-canvas">
         <Hero />

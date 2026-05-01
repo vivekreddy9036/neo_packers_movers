@@ -58,7 +58,7 @@ export function Process() {
   const transition = isResetting ? INSTANT : SPRING;
 
   return (
-    <section ref={sectionRef} className="section-py bg-canvas relative overflow-hidden">
+    <section ref={sectionRef} id="process" className="section-py bg-canvas relative overflow-hidden">
       <div className="container-x relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
