@@ -7,10 +7,10 @@ import Image from "next/image";
 import { cn, scrollTo, SITE } from "@/lib/utils";
 
 const NAV = [
-  { href: "#services",   label: "Services"     },
-  { href: "#process",    label: "How We Work"  },
-  { href: "#why-us",     label: "Why Neo"      },
-  { href: "#industries", label: "Industries"   },
+  { href: "#why-us",     label: "Why Neo"     },
+  { href: "#services",   label: "Services"    },
+  { href: "#process",    label: "How We Work" },
+  { href: "#industries", label: "Industries"  },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;

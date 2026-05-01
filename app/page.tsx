@@ -20,11 +20,11 @@ export default function HomePage() {
       <main className="bg-canvas">
         <Hero />
         <TrustBar />
-        <Services />
         <WhyChooseUs />
+        <Services />
         <Process />
-        <Testimonials />
         <Industries />
+        <Testimonials />
         <LeadForm />
       </main>
       <Footer />
