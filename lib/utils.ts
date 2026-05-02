@@ -12,8 +12,8 @@ export function scrollTo(href: string) {
 
 export const SITE = {
   name: "Neo Packers & Movers",
-  phone: "+91 91211 04237",
-  whatsapp: "919121104237",
+  phone: "+91 91211 04235",
+  whatsapp: "919121104235",
   email: "info@neopackersandmovers.com",
   established: 1999,
   address:
