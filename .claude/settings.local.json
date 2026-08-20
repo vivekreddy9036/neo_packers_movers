@@ -6,7 +6,15 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(npm run *)",
-      "Bash(xargs wc *)"
+      "Bash(xargs wc *)",
+      "Bash(npm install *)",
+      "Bash(Get-Content \"C:\\\\Users\\\\varsh\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Varshit-s-Workspace-neo-packers-movers\\\\0a06df2d-76d5-4c24-85d3-a73b9cb3acb1\\\\tasks\\\\bee66esk2.output\" -Wait)",
+      "Bash(Select-String -Pattern \"Ready|ready|started|Error|error|localhost\" --line-buffered)",
+      "Bash(git remote *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Varshit's Workspace\\\\neo_packers_movers\" -Recurse -Directory)",
+      "Bash(Select-Object -First 30)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Varshit's Workspace\\\\neo_packers_movers\" -Recurse -Directory | Select-Object -First 30 | ForEach-Object { $_.FullName })",
+      "Bash(copy *)"
     ]
   }
 }

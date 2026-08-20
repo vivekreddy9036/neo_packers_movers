@@ -3,37 +3,37 @@
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  UserCircle,
-  Package,
-  Globe,
-  Fire,
+  CurrencyDollar,
+  Timer,
   Seal,
-  Diamond,
+  Wrench,
+  GraduationCap,
+  Lightbulb,
 } from "@phosphor-icons/react";
 import { whyChooseUs } from "@/lib/data";
 import { scrollTo } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const ICONS = [UserCircle, Package, Globe, Fire, Seal, Diamond];
+const ICONS = [CurrencyDollar, Timer, Seal, Wrench, GraduationCap, Lightbulb];
 
 export function WhyChooseUs() {
   return (
     <section id="why-us" className="section-py bg-canvas-50/60">
       <div className="container-x">
         <div className="max-w-3xl mb-16">
-          <p className="display-eyebrow mb-4">Why Neo</p>
+          <p className="display-eyebrow mb-4">Why us</p>
           <h2 className="display-h2">
-            Specialists in cargo
+            Our commitment to
             <br />
-            <span className="text-slate-500">that can&rsquo;t go wrong.</span>
+            <span className="text-slate-500">excellence sets us apart.</span>
           </h2>
         </div>
 
         {/* 6 cards — full-width 3×2 grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {whyChooseUs.map((item, i) => {
-            const Icon = ICONS[i] ?? Diamond;
+            const Icon = ICONS[i] ?? Lightbulb;
             return (
               <motion.div
                 key={item.n}

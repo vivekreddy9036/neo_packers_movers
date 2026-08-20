@@ -12,11 +12,11 @@ export function CaseStudies() {
       <div className="container-x">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div className="max-w-xl">
-            <p className="display-eyebrow mb-4">Selected projects</p>
+            <p className="display-eyebrow mb-4">Highlight Projects</p>
             <h2 className="display-h2">
-              Moves that
+              At NEO, every
               <br />
-              <span className="text-slate-500">couldn&rsquo;t go wrong.</span>
+              <span className="text-slate-500">component is a mission.</span>
             </h2>
           </div>
           <span

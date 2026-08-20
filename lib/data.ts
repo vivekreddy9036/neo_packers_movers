@@ -1,56 +1,65 @@
 export const services = [
   {
+    slug: "wooden-boxes",
+    title: "Wooden Boxes, Crates, Pallets & Saddles",
+    blurb:
+      "Design and fabrication of custom wooden boxes, crates, pallets, and saddles — heat-treated at our in-house FHAT plant for full international compliance.",
+    stat: "In-house",
+    statLabel: "FHAT treatment plant",
+    feature: true,
+  },
+  {
     slug: "industrial-packing",
     title: "Industrial Packing, Unpacking & Movement",
     blurb:
       "Comprehensive solutions for the safe packing, unpacking, and movement of all types of industrial goods — from precision instruments to plant-scale equipment.",
     stat: "500+",
     statLabel: "Industrial projects delivered",
-    feature: true,
+    feature: false,
   },
   {
-    slug: "heavy-machinery-relocation",
-    title: "Heavy Machinery Relocation",
+    slug: "heavy-machinery",
+    title: "Heavy Machinery Packing, Unpacking & Movement",
     blurb:
       "Specialized expertise in handling, packing, and relocating heavy machinery — CNC machines, presses, transformers and more.",
-    stat: "80 MT",
-    statLabel: "Max single-piece payload",
+    stat: "5,000+",
+    statLabel: "Vehicle movements",
+    feature: false,
+  },
+  {
+    slug: "container-lashing",
+    title: "Container Lashing & Onsite Packing",
+    blurb:
+      "Our team arrives at your facility with all equipment and performs professional packing on-site, with precise container lashing for transit stability.",
+    stat: "25+",
+    statLabel: "Years of experience",
     feature: false,
   },
   {
     slug: "export-packing",
     title: "Export Ready Packing",
     blurb:
-      "Ensuring all consignments meet international and shipping standards — IPPC-stamped, fumigated, and CHA-cleared for any port.",
-    stat: "ISPM-15",
-    statLabel: "Phytosanitary compliance",
+      "Fully compliant with all global shipping standards — ISPM 15, ATA SPEC 300, ASTM D6251 and MIL-STD. Seamless international transit, including necessary certifications.",
+    stat: "ISPM 15",
+    statLabel: "Certified & compliant",
     feature: false,
   },
   {
-    slug: "office-relocation",
-    title: "Office Goods Relocation",
+    slug: "cargo-packing",
+    title: "Cargo / Shipping Ready Packing",
     blurb:
-      "Efficient packing, unpacking, and movement for office goods — IT-grade handling, minimal downtime, and complete accountability.",
+      "End-to-end cargo packing solutions built for sea, air, and road freight — vacuum packing, VCI protection, heat shrink wrapping and more.",
+    stat: "30,000+",
+    statLabel: "Happy customers",
+    feature: false,
+  },
+  {
+    slug: "office-goods",
+    title: "Office Goods Packing, Unpacking & Movement",
+    blurb:
+      "Efficient packing, unpacking, and movement for office goods — careful handling, minimal downtime, and complete accountability.",
     stat: "700+",
     statLabel: "Office projects completed",
-    feature: false,
-  },
-  {
-    slug: "on-site-packing",
-    title: "On-site Packing & Container Lashing",
-    blurb:
-      "Our team arrives at your facility with all equipment and performs professional packing on-site, with secure container lashing for transit stability.",
-    stat: "5,000+",
-    statLabel: "Vehicle movements",
-    feature: false,
-  },
-  {
-    slug: "custom-crating",
-    title: "Custom Wooden Boxes, Crates & Pallets",
-    blurb:
-      "Design and fabrication of custom wooden boxes, crates, pallets, and saddles — heat-treated at our in-house FHAT plant for full compliance.",
-    stat: "In-house",
-    statLabel: "FHAT treatment plant",
     feature: false,
   },
 ];
@@ -58,50 +67,50 @@ export const services = [
 export const metrics = [
   { value: "25", label: "Years of experience", suffix: "+" },
   { value: "500", label: "Industrial projects", suffix: "+" },
-  { value: "700", label: "Office relocations", suffix: "+" },
+  { value: "700", label: "Office projects", suffix: "+" },
   { value: "5000", label: "Vehicle movements", suffix: "+" },
+  { value: "30000", label: "Happy customers", suffix: "+" },
 ];
 
 export const whyChooseUs = [
   {
     n: "01",
-    title: "One Point of Contact",
-    body: "A single dedicated project manager orchestrates every detail — from site survey to final delivery. No handoffs, no coordination gaps, full accountability.",
+    title: "Cost-Efficient",
+    body: "We continuously innovate and improve our processes to keep costs low, making our high-quality services accessible.",
   },
   {
     n: "02",
-    title: "Customised Pallets, Crates, Boxes & Saddles",
-    body: "We craft bespoke wooden architectures designed around your cargo's exact dimensions and weight — built for resilience and long-haul sustainability.",
+    title: "Timely Delivery",
+    body: "We strive to be consistently trustworthy, ensuring timely and secure transitions for every consignment.",
   },
   {
     n: "03",
-    title: "Global Gateway",
-    body: "Our in-house CHA team navigates international shipping standards, customs documentation, and phytosanitary requirements — your cargo crosses borders seamlessly.",
+    title: "Certified & Compliant",
+    body: "ISPM 15 certified, adhering to ATA SPEC 300, ASTM D6251 and MIL-STD. Your shipments move smoothly across borders.",
   },
   {
     n: "04",
-    title: "In-House Wood Treatment Plant",
-    body: "All timber is heat-treated at our state-of-the-art FHAT (Forced Hot Air Treatment) Plant — ensuring full compliance with international phytosanitary measures.",
+    title: "Tailored In-house Solutions",
+    body: "We craft solutions to your precise drawings or provide drawings engineered to perfectly fit your product's size & load-bearing requirements.",
   },
   {
     n: "05",
-    title: "ISPM Certified",
-    body: "We rigorously adhere to ISPM-15 phytosanitary standards for all wooden packaging — a mandatory requirement for international export compliance.",
+    title: "Deep Specialized Expertise",
+    body: "We invest in continual training of our staff to deliver best practices and develop deep expertise for every project.",
   },
   {
     n: "06",
-    title: "Top-of-the-Line Materials",
-    body: "Anti-corrosion VCI films, heavy-duty tarpaulins, HDPE covers, lashing belts, and specialised wood screws — only best-in-class materials enter your shipment.",
+    title: "Constant Innovation & Training",
+    body: "We adopt and innovate new methods and technology, allowing us to offer cost-effective and efficient solutions.",
   },
 ];
 
 export const processSteps = [
-  { n: "01", title: "Survey", body: "Site walk, asset audit, risk register.", days: "Day 1–2" },
-  { n: "02", title: "Engineer", body: "Lift plan, route survey, packaging spec.", days: "Day 3–5" },
-  { n: "03", title: "Pack", body: "Custom crating, IPPC stamping, label QC.", days: "Day 6–9" },
-  { n: "04", title: "Lift", body: "Crane ops, rigging, load securement.", days: "Day 10" },
-  { n: "05", title: "Transport", body: "Heavy-haul fleet with live GPS.", days: "Day 11–14" },
-  { n: "06", title: "Install", body: "Unload, position, sign-off with client.", days: "Day 15" },
+  { n: "01", title: "Understand", body: "We understand your requirements — assets, dimensions, handling constraints and transit risks." },
+  { n: "02", title: "Develop", body: "Develop boxes from your provided drawings or offer custom engineering designs based on requirements." },
+  { n: "03", title: "Procedure & Costing", body: "We provide a detailed procedure and itemised costing — transparent, with no hidden charges." },
+  { n: "04", title: "Get Approval", body: "Review and approve the plan before we begin — clear sign-off at every stage." },
+  { n: "05", title: "Deliver", body: "Timely & safe delivery — packed, moved, and signed off with the client on site." },
 ];
 
 export const caseStudies = [
@@ -115,7 +124,7 @@ export const caseStudies = [
       { k: "0", v: "Transit incidents" },
     ],
     image:
-      "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?auto=format&fit=crop&w=1600&q=80",
+      "https://ik.imagekit.io/2ecf22k5j/neo%20packers%20and%20movers/neo%20logo/image2.png?updatedAt=1787238391959",
   },
   {
     slug: "integrated-iron-wooden-crate",
@@ -127,7 +136,7 @@ export const caseStudies = [
       { k: "100%", v: "Integrity on arrival" },
     ],
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80",
+      "https://ik.imagekit.io/2ecf22k5j/neo%20packers%20and%20movers/neo%20logo/image3.png?updatedAt=1787238391932",
   },
   {
     slug: "missile-shell-packing",
@@ -139,7 +148,7 @@ export const caseStudies = [
       { k: "Intl std", v: "Defence certification" },
     ],
     image:
-      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1600&q=80",
+      "https://ik.imagekit.io/2ecf22k5j/neo%20packers%20and%20movers/neo%20logo/image%204.png?updatedAt=1787238391754",
   },
 ];
 
@@ -175,14 +184,14 @@ export const testimonials = [
 ];
 
 export const industries = [
-  "Automotive",
+  "Aviation & Defence",
   "Pharmaceuticals",
-  "Power & Energy",
-  "Steel & Metals",
-  "Textiles",
-  "Defence",
-  "Food & Beverage",
-  "Chemicals",
+  "Oil & Gas",
+  "Renewable Energy",
+  "Heavy Engineering",
+  "Healthcare",
+  "Infrastructure",
+  "IT & Technology",
 ];
 
 export const faqs = [
@@ -200,7 +209,7 @@ export const faqs = [
   },
   {
     q: "What licenses and certifications do you hold?",
-    a: "We are ISO 9001:2015 certified, IATA & FIATA accredited, ISPM-15 phytosanitary compliant, GST verified, and MSME registered. Our in-house FHAT (Forced Hot Air Treatment) plant meets all international timber treatment and export standards.",
+    a: "We are ISPM 15 certified and rigorously comply with ATA SPEC 300, ASTM D6251, and MIL-STD standards. Our in-house FHAT (Forced Hot Air Treatment) plant ensures all timber is export-worthy, sea-worthy, and air-worthy, meeting international phytosanitary standards.",
   },
   {
     q: "Do you provide on-site packing services?",
@@ -212,7 +221,7 @@ export const faqs = [
   },
   {
     q: "What is your experience in the industry?",
-    a: "With over 25 years of experience, Neo Packers & Movers has delivered 500+ industrial projects, 700+ office relocations, and 5,000+ vehicle movements across 28 states. Our portfolio includes defence-grade packing for Aviation & Defence clients and international export shipments.",
+    a: "With over 25 years of experience since 2000, NEO Packers & Movers has delivered 500+ industrial projects, 700+ office projects, and 5,000+ vehicle movements, serving 30,000+ happy customers. Our portfolio includes defence-grade packing for aviation & defence clients such as Lockheed Martin, Bharat Dynamics Limited, and Adani Defence & Aerospace.",
   },
   {
     q: "How do you determine pricing for your services?",

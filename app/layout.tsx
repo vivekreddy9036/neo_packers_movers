@@ -2,30 +2,38 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://neoindustrial.example"),
+  metadataBase: new URL("https://neopackersandmovers.com"),
   title: {
-    default: "Neo Industrial — Heavy machinery, moved without a single dent.",
-    template: "%s · Neo Industrial",
+    default: "NEO Packers & Movers — Packed for Safety, Ready for Transit.",
+    template: "%s · NEO Packers & Movers",
   },
   description:
-    "Industrial relocation, export packing, and pan-India heavy-haul logistics — engineered by specialists, not movers. 20+ years. 12,000+ moves. ISO 9001 · IATA · FIATA.",
+    "Professional industrial packing company trusted by India's leading industries for 25 years. ISPM 15 certified. 500+ industrial projects, 30,000+ happy customers. Hyderabad, Bengaluru, Gandhidham.",
   keywords: [
     "industrial packing",
     "heavy machinery relocation",
     "export packing",
-    "office relocation",
-    "custom crating",
-    "logistics India",
-    "packers and movers industrial",
+    "custom wooden crates",
+    "container lashing",
+    "vacuum packing",
+    "VCI packing",
+    "ISPM 15 certified",
+    "packers and movers Hyderabad",
+    "defence packing",
+    "aerospace packing",
   ],
   openGraph: {
-    title: "Neo Industrial — India's industrial cargo arrives intact.",
+    title: "NEO Packers & Movers — Packed for Safety, Ready for Transit.",
     description:
-      "We move what others won't. CNCs, presses, transformers up to 80 MT — pan-India, claim-free.",
+      "India's trusted industrial packing specialists since 2000. ISPM 15 · ATA SPEC 300 · MIL-STD compliant. 500+ industrial projects, 30,000+ happy customers.",
     type: "website",
     locale: "en_IN",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/neo-icon.png",
+    apple: "/neo-icon.png",
+  },
 };
 
 export const viewport: Viewport = {

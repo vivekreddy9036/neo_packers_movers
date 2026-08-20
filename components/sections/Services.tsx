@@ -12,25 +12,29 @@ const BENTO: Record<string, { grid: string; large: boolean; video?: string }> = 
     large: true,
     video: "https://ik.imagekit.io/factamrita/Neo_Packers_Movers/Final_Grid_2_Video?updatedAt=1777542847552",
   },
-  "export-packing": {
+  "wooden-boxes": {
     grid: "lg:col-start-3 lg:col-span-1 lg:row-start-1 lg:row-span-1",
     large: false,
   },
-  "office-relocation": {
+  "export-packing": {
     grid: "lg:col-start-4 lg:col-span-1 lg:row-start-1 lg:row-span-1",
     large: false,
   },
-  "heavy-machinery-relocation": {
+  "heavy-machinery": {
     grid: "lg:col-start-3 lg:col-span-2 lg:row-start-2 lg:row-span-2",
     large: true,
     video: "https://ik.imagekit.io/factamrita/Neo_Packers_Movers/Final_Grid_1_Video?updatedAt=1777542828084",
   },
-  "on-site-packing": {
+  "container-lashing": {
     grid: "lg:col-start-1 lg:col-span-1 lg:row-start-3 lg:row-span-1",
     large: false,
   },
-  "custom-crating": {
+  "cargo-packing": {
     grid: "lg:col-start-2 lg:col-span-1 lg:row-start-3 lg:row-span-1",
+    large: false,
+  },
+  "office-goods": {
+    grid: "lg:col-start-1 lg:col-span-4 lg:row-start-4 lg:row-span-1",
     large: false,
   },
 };
@@ -41,16 +45,16 @@ export function Services() {
       <div className="container-x">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
-            <p className="display-eyebrow mb-4">What we move</p>
+            <p className="display-eyebrow mb-4">Our Offerings</p>
             <h2 className="display-h2">
-              Built for cargo
+              Our expertise,
               <br />
-              <span className="text-slate-500">that can&rsquo;t fail.</span>
+              <span className="text-slate-500">your peace of mind.</span>
             </h2>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px] gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-[220px_220px_220px_220px] gap-4">
           {services.map((service, i) => {
             const meta = BENTO[service.slug];
             const hasVideo = !!meta?.video;

@@ -5,12 +5,16 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
+import { SITE } from "@/lib/utils";
 import {
   ArrowRight,
   CheckCircle,
   Truck,
   Buildings,
   Airplane,
+  Package,
+  Wrench,
+  Anchor,
   GearSix,
   Spinner,
   ShieldCheck,
@@ -21,8 +25,8 @@ import {
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const schema = z.object({
-  moveType: z.enum(["industrial", "export", "office", "other"], {
-    errorMap: () => ({ message: "Please pick a move type" }),
+  moveType: z.enum(["industrial", "export", "wooden-boxes", "office"], {
+    errorMap: () => ({ message: "Please pick a service type" }),
   }),
   origin: z.string().min(2, "Origin city required"),
   destination: z.string().min(2, "Destination city required"),
@@ -33,11 +37,11 @@ const schema = z.object({
 
 type Form = z.infer<typeof schema>;
 
-const MOVE_TYPES: { value: Form["moveType"]; label: string; icon: typeof Truck }[] = [
-  { value: "industrial", label: "Industrial / Heavy Machinery", icon: Truck },
-  { value: "export", label: "Export Packing", icon: Airplane },
-  { value: "office", label: "Office / Corporate", icon: Buildings },
-  { value: "other", label: "Other", icon: GearSix },
+const MOVE_TYPES: { value: Form["moveType"]; label: string; sub: string; icon: typeof Truck }[] = [
+  { value: "industrial",   label: "Industrial & Heavy Machinery",  sub: "Packing, unpacking & relocation",      icon: Wrench   },
+  { value: "export",       label: "Export & Cargo Packing",        sub: "ISPM 15 · container lashing · shipping", icon: Airplane },
+  { value: "wooden-boxes", label: "Wooden Crates & Boxes",         sub: "Custom boxes, pallets & saddles",       icon: Package  },
+  { value: "office",       label: "Office Goods",                  sub: "Packing, unpacking & movement",         icon: Buildings},
 ];
 
 export function LeadForm() {
@@ -65,7 +69,7 @@ export function LeadForm() {
     setError(null);
     try {
       const res = await fetch(
-        "https://formsubmit.co/ajax/shekarreddyneo@gmail.com",
+        "https://formsubmit.co/ajax/neo_packermovers@yahoo.co.in",
         {
           method: "POST",
           headers: {
@@ -94,10 +98,11 @@ export function LeadForm() {
       }
       setSubmitted(true);
     } catch (e) {
+      const msg = e instanceof Error ? e.message : "";
       setError(
-        e instanceof Error
-          ? e.message
-          : "Could not submit. Please call us or try again."
+        msg.toLowerCase().includes("activation") || msg.toLowerCase().includes("activate")
+          ? "Our enquiry system is being set up. Please call us directly on " + SITE.phone + " and we'll arrange your site survey right away."
+          : "Could not submit. Please call us on " + SITE.phone + " or try again shortly."
       );
     } finally {
       setSubmitting(false);
@@ -147,7 +152,7 @@ export function LeadForm() {
 
           {/* Form card */}
           <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-100 rounded-xl p-8 md:p-10 shadow-elevated">
+            <div className="bg-white border border-slate-100 rounded-xl p-6 md:p-8 shadow-elevated">
               {submitted ? (
                 <SuccessState />
               ) : (
@@ -179,34 +184,29 @@ export function LeadForm() {
                           <h3 className="font-display font-bold text-2xl text-ink-900 mb-6 tracking-tight-display">
                             What kind of move?
                           </h3>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            {MOVE_TYPES.map(({ value, label, icon: Icon }) => {
+                          <div className="grid grid-cols-2 gap-3">
+                            {MOVE_TYPES.map(({ value, label, sub, icon: Icon }) => {
                               const active = moveType === value;
                               return (
                                 <button
                                   type="button"
                                   key={value}
-                                  onClick={() =>
-                                    setValue("moveType", value, {
-                                      shouldValidate: true,
-                                    })
-                                  }
-                                  className={`group flex items-center gap-3 p-4 rounded-xl border text-left transition-all duration-200 ${
+                                  onClick={() => setValue("moveType", value, { shouldValidate: true })}
+                                  className={`group flex flex-col gap-2 p-4 rounded-xl border text-left transition-all duration-200 ${
                                     active
                                       ? "border-ink-900 bg-ink-900 text-white shadow-soft"
                                       : "border-slate-200 bg-white text-ink-900 hover:border-slate-300 hover:bg-canvas-50"
                                   }`}
                                 >
                                   <Icon
-                                    size={20}
+                                    size={18}
                                     weight="duotone"
-                                    className={
-                                      active ? "text-signal-500" : "text-slate-500"
-                                    }
+                                    className={active ? "text-signal-500" : "text-slate-400"}
                                   />
-                                  <span className="text-sm font-medium">
-                                    {label}
-                                  </span>
+                                  <div>
+                                    <p className="text-[13px] font-semibold leading-tight">{label}</p>
+                                    <p className={`text-[11px] mt-0.5 leading-tight ${active ? "text-white/60" : "text-slate-400"}`}>{sub}</p>
+                                  </div>
                                 </button>
                               );
                             })}

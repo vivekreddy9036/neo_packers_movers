@@ -3,18 +3,18 @@
 import { useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import {
-  Car,
+  AirplaneTilt,
   FirstAid,
+  Drop,
   Lightning,
   Factory,
-  TShirt,
-  Shield,
-  ForkKnife,
-  Flask,
+  Heartbeat,
+  Buildings,
+  Cpu,
 } from "@phosphor-icons/react";
 import { industries } from "@/lib/data";
 
-const ICONS = [Car, FirstAid, Lightning, Factory, TShirt, Shield, ForkKnife, Flask];
+const ICONS = [AirplaneTilt, FirstAid, Drop, Lightning, Factory, Heartbeat, Buildings, Cpu];
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Industries() {

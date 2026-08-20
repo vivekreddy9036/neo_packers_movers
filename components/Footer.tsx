@@ -15,11 +15,11 @@ const SERVICES = [
 ];
 
 const CERTS = [
-  "GST: 36AAFCN9636H1ZO",
-  "ISO 9001:2015",
-  "IATA · FIATA",
-  "ISPM-15 Certified",
-  "MSME Registered",
+  "ISPM 15 Certified",
+  "ATA SPEC 300",
+  "ASTM D6251",
+  "MIL-STD Compliant",
+  "In-house FHAT Plant",
 ];
 
 export function Footer() {

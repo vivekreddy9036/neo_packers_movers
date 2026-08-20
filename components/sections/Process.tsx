@@ -5,10 +5,9 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   MagnifyingGlass,
   PencilLine,
-  Package,
-  Crane,
-  Truck,
+  ClipboardText,
   CheckCircle,
+  Truck,
 } from "@phosphor-icons/react";
 import { processSteps } from "@/lib/data";
 
@@ -19,14 +18,15 @@ const INSTANT = { duration: 0 };
 const STAGE_ICONS = [
   MagnifyingGlass,
   PencilLine,
-  Package,
-  Crane,
-  Truck,
+  ClipboardText,
   CheckCircle,
+  Truck,
 ] as const;
 
-// Centre of node i as % of the flex container (6 equal columns, justify-between)
-const nodePct = (i: number) => ((2 * i + 1) / 12) * 100;
+const N = processSteps.length; // 5
+
+// Centre of node i as % of the flex container (5 equal columns, justify-between)
+const nodePct = (i: number) => ((2 * i + 1) / (N * 2)) * 100;
 
 export function Process() {
   const [active, setActive] = useState(0);
@@ -35,8 +35,6 @@ export function Process() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { margin: "-120px" });
 
-  // Detect the wrap-around reset (step 5 → 0) so we can snap instantly
-  // instead of animating backwards across the whole track.
   const prevActive = useRef(0);
   const isResetting =
     active === 0 && prevActive.current === processSteps.length - 1;
@@ -45,7 +43,6 @@ export function Process() {
     prevActive.current = active;
   });
 
-  // Auto-advance every 1 s; pause on hover or when off-screen
   useEffect(() => {
     if (paused || !isInView) return;
     const t = setInterval(
@@ -65,7 +62,7 @@ export function Process() {
           <div className="max-w-xl">
             <p className="display-eyebrow mb-4">How we operate</p>
             <h2 className="display-h2">
-              A 6-stage workflow,
+              A 5-stage workflow,
               <br />
               <span className="text-slate-500">every move.</span>
             </h2>
@@ -81,46 +78,31 @@ export function Process() {
           onMouseLeave={() => setPaused(false)}
         >
           <div className="relative">
-            {/*
-              Rail wrapper spans exactly from the RIGHT EDGE of circle 0
-              to the LEFT EDGE of circle 5.
-              Each circle is 88 px wide (half = 44 px).
-              nodePct(0) = 8.33 %  →  left  = calc(8.33%  + 44px)
-              nodePct(5) = 91.67 % →  right = calc(8.33%  + 44px)
-            */}
+            {/* Rail */}
             <div
               className="absolute"
               style={{
                 top: "43px",
                 height: "2px",
                 left: `calc(${nodePct(0)}% + 44px)`,
-                right: `calc(${100 - nodePct(5)}% + 44px)`,
+                right: `calc(${100 - nodePct(N - 1)}% + 44px)`,
               }}
             >
-              {/* Grey background rail */}
               <div className="absolute inset-0 bg-slate-100 rounded-full" />
-
-              {/* Orange progress — width is a % of the wrapper above,
-                  so 0 % at step 0 and 100 % at step 5.
-                  Framer Motion spring-interpolates between these. */}
               <motion.div
                 className="absolute left-0 top-0 h-full bg-signal-500 rounded-full"
-                animate={{ width: `${(active / 5) * 100}%` }}
+                animate={{ width: `${(active / (N - 1)) * 100}%` }}
                 transition={transition}
               />
             </div>
 
-            {/* ── Travelling icon bubble ──
-                Positioned at nodePct(active) % from the left so it
-                sits over the correct circle centre. z-20 keeps it
-                above everything including the circles (z-10). */}
+            {/* Travelling icon bubble */}
             <motion.div
               className="absolute z-20"
-              style={{ top: "24px" }} // 44 − 20 = centres the 40 px bubble on the rail
+              style={{ top: "24px" }}
               animate={{ left: `${nodePct(active)}%` }}
               transition={transition}
             >
-              {/* Inner wrapper handles −50 % centering without conflicting with Framer */}
               <div className="-translate-x-1/2">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -133,16 +115,14 @@ export function Process() {
                   >
                     {(() => {
                       const Icon = STAGE_ICONS[active];
-                      return (
-                        <Icon size={18} weight="fill" className="text-white" />
-                      );
+                      return <Icon size={18} weight="fill" className="text-white" />;
                     })()}
                   </motion.div>
                 </AnimatePresence>
               </div>
             </motion.div>
 
-            {/* ── Stage nodes ── */}
+            {/* Stage nodes */}
             <div className="flex justify-between">
               {processSteps.map((step, i) => {
                 const Icon = STAGE_ICONS[i];
@@ -152,17 +132,13 @@ export function Process() {
                 return (
                   <button
                     key={step.n}
-                    onClick={() => {
-                      setActive(i);
-                      setPaused(true);
-                    }}
-                    className="flex flex-col items-center w-[calc(100%/6)] focus:outline-none"
+                    onClick={() => { setActive(i); setPaused(true); }}
+                    className="flex flex-col items-center focus:outline-none"
+                    style={{ width: `${100 / N}%` }}
                   >
-                    {/* z-10 keeps circles above the rail line */}
                     <motion.div
                       animate={{
-                        borderColor:
-                          isPast || isCurrent ? "#F97316" : "#e2e8f0",
+                        borderColor: isPast || isCurrent ? "#F97316" : "#e2e8f0",
                         backgroundColor: isCurrent ? "#fff7ed" : "#ffffff",
                       }}
                       transition={{ duration: 0.4 }}
@@ -170,21 +146,15 @@ export function Process() {
                     >
                       <motion.span
                         animate={{ scale: isCurrent ? 1.18 : 1 }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 420,
-                          damping: 28,
-                        }}
+                        transition={{ type: "spring", stiffness: 420, damping: 28 }}
                       >
                         <Icon
                           size={30}
                           weight={isCurrent ? "fill" : "duotone"}
                           className={
-                            isCurrent
-                              ? "text-signal-500"
-                              : isPast
-                              ? "text-signal-400"
-                              : "text-slate-300"
+                            isCurrent ? "text-signal-500"
+                            : isPast    ? "text-signal-400"
+                            :             "text-slate-300"
                           }
                         />
                       </motion.span>
@@ -195,9 +165,6 @@ export function Process() {
                       <h3 className="font-display font-bold text-[1.05rem] text-ink-900 tracking-tight-display leading-snug">
                         {step.title}
                       </h3>
-                      <p className="num mt-1 text-[10px] uppercase tracking-[0.16em] text-signal-600 font-medium">
-                        {step.days}
-                      </p>
                       <motion.p
                         animate={{ opacity: isCurrent ? 1 : 0.28 }}
                         transition={{ duration: 0.35 }}
@@ -230,18 +197,13 @@ export function Process() {
                 transition={{ duration: 0.5, ease }}
                 className="flex gap-5 relative"
               >
-                {/* Left column: icon node + connecting line */}
+                {/* Left column: icon + connecting line */}
                 <div className="flex flex-col items-center flex-shrink-0">
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true, margin: "-50px" }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 260,
-                      damping: 20,
-                      delay: 0.1,
-                    }}
+                    transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
                     className="h-14 w-14 rounded-full border-2 border-signal-500 bg-white grid place-items-center z-10 shadow-soft"
                   >
                     <Icon size={22} weight="duotone" className="text-signal-500" />
@@ -254,11 +216,7 @@ export function Process() {
                         initial={{ height: "0%" }}
                         whileInView={{ height: "100%" }}
                         viewport={{ once: true, margin: "-30px" }}
-                        transition={{
-                          duration: 0.75,
-                          ease: "linear",
-                          delay: 0.35,
-                        }}
+                        transition={{ duration: 0.75, ease: "linear", delay: 0.35 }}
                       />
                     </div>
                   )}
@@ -267,14 +225,9 @@ export function Process() {
                 {/* Right column: content card */}
                 <div className={`flex-1 ${isLast ? "pb-0" : "pb-6"}`}>
                   <div className="bg-white border border-slate-100 rounded-xl p-5 shadow-soft">
-                    <div className="flex items-start justify-between gap-3 mb-1">
-                      <h3 className="font-display font-bold text-xl text-ink-900 tracking-tight-display">
-                        {step.title}
-                      </h3>
-                      <span className="num text-[10px] uppercase tracking-[0.14em] text-signal-600 font-medium flex-shrink-0 pt-1">
-                        {step.days}
-                      </span>
-                    </div>
+                    <h3 className="font-display font-bold text-xl text-ink-900 tracking-tight-display mb-1">
+                      {step.title}
+                    </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">
                       {step.body}
                     </p>

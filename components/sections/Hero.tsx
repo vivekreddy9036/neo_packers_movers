@@ -7,10 +7,10 @@ import { scrollTo, SITE } from "@/lib/utils";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const TRUST = [
-  { value: "25+", label: "Years of experience" },
-  { value: "500+", label: "Industrial projects" },
-  { value: "5,000+", label: "Vehicle movements" },
-  { value: "28", label: "States served" },
+  { value: "25+",     label: "Years of experience" },
+  { value: "500+",    label: "Industrial projects"  },
+  { value: "5,000+",  label: "Vehicle movements"    },
+  { value: "30,000+", label: "Happy customers"      },
 ];
 
 export function Hero() {
@@ -55,7 +55,7 @@ export function Hero() {
             transition={{ duration: 0.5, ease }}
             className="display-eyebrow mb-6"
           >
-            EST. 1999 &nbsp;·&nbsp; ISO 9001 &nbsp;·&nbsp; IATA &amp; FIATA CERTIFIED
+            EST. 2000 &nbsp;·&nbsp; ISPM 15 Certified &nbsp;·&nbsp; ATA SPEC 300 &nbsp;·&nbsp; MIL-STD
           </motion.p>
 
           <motion.h1
@@ -75,9 +75,9 @@ export function Hero() {
             transition={{ duration: 0.6, ease, delay: 0.2 }}
             className="mt-6 lead max-w-xl"
           >
-            Safeguarding your most vital assets is not just logistics — it&rsquo;s
-            an art. An art perfected over 25 years, where every nuance of
-            protection is meticulously crafted.
+            India&rsquo;s trusted industrial packing company for 25 years.
+            From custom wooden crates to heavy machinery relocation — we protect,
+            pack, and deliver your most critical assets, anywhere in India.
           </motion.p>
 
           <motion.div
